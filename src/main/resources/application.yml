@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: kafka-cache-killer
+  kafka:
+    admin:
+      auto-create: false
+    producer:
+      acks: all
+      batch-size: 32KB
+      buffer-memory: 64MB
+      compression-type: zstd
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        linger.ms: 5
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 5
+    consumer:
+      group-id: ${spring_kafka_consumer_group_id:${spring.application.name}-${random.uuid}}
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      enable-auto-commit: true
+      auto-commit-interval: 5s
+      auto-offset-reset: latest
+      heartbeat-interval: 3s
+      properties:
+        spring.json.trusted.packages: '*'
+        session.timeout.ms: 45000
+        max.poll.interval.ms: 300000
+        fetch.max.bytes: 52428800
+      fetch-min-size: 1B
+      fetch-max-wait: 500ms
+      max-poll-records: 500
+    template:
+      default-topic: cache-kill
+    bootstrap-servers:
+      - localhost:9092
+    retry:
+      topic:
+        backoff:
+          delay: 100ms
+server:
+  port: 7777
+cache:
+  kill:
+    endpoint: /cache/kill
+    wait-time:
+      value: 10
+      unit: seconds

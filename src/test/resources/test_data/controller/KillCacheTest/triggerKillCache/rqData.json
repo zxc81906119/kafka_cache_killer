@@ -1,0 +1,13 @@
+{
+  "kind": "oeai",
+  "name": "sysParam",
+  "spec": {
+    "a": "b",
+    "c": [
+      "happy"
+    ],
+    "d": {
+      "kk": "yes"
+    }
+  }
+}
