@@ -1,5 +1,7 @@
-package com.redhat.kafkacachekiller.cache;
+package com.redhat.kafkacachekiller.example;
 
+import com.redhat.kafkacachekiller.cache.CacheKiller;
+import com.redhat.kafkacachekiller.cache.CacheKillerId;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

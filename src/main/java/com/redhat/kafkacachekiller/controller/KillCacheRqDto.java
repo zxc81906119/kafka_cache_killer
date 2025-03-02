@@ -1,4 +1,4 @@
-package com.redhat.kafkacachekiller.controller.model;
+package com.redhat.kafkacachekiller.controller;
 
 import com.redhat.kafkacachekiller.cache.CacheKillerInfo;
 import com.redhat.kafkacachekiller.mapstruct.BaseMapperConfig;

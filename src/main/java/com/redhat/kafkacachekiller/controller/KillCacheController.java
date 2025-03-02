@@ -2,8 +2,6 @@ package com.redhat.kafkacachekiller.controller;
 
 import com.redhat.kafkacachekiller.cache.CacheKillerInfo;
 import com.redhat.kafkacachekiller.cache.CacheKillerRegistry;
-import com.redhat.kafkacachekiller.controller.model.KillCacheRqDto;
-import com.redhat.kafkacachekiller.controller.model.KillCacheRsDto;
 import com.redhat.kafkacachekiller.prop.KillCacheProperties;
 import com.redhat.kafkacachekiller.status.Status;
 import jakarta.validation.Valid;
