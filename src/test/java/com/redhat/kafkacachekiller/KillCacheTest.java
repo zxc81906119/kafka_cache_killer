@@ -17,7 +17,7 @@ public class KillCacheTest extends BaseMvcTest {
     public void triggerKillCache() throws Exception {
         val perform = mvc.perform(getMockRequestBuilder());
         perform.andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("status").value(Status.ASYNC_NOTIFY.name()));
+                .andExpect(MockMvcResultMatchers.jsonPath("status").value(Status.ASYNC.name()));
         Thread.sleep(1000);
     }
 

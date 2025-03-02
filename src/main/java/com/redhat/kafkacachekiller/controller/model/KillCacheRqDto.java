@@ -2,6 +2,7 @@ package com.redhat.kafkacachekiller.controller.model;
 
 import com.redhat.kafkacachekiller.cache.CacheKillerInfo;
 import com.redhat.kafkacachekiller.mapstruct.BaseMapperConfig;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,8 +19,9 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class KillCacheRqDto {
-
+    @NotNull
     private String kind;
+    @NotNull
     private String name;
     private boolean self = false;
     private Map<String, Object> spec;
