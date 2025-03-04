@@ -16,7 +16,7 @@ spring:
         enable.idempotence: true
         max.in.flight.requests.per.connection: 5
     consumer:
-      group-id: ${spring_kafka_consumer_group_id:a}
+      group-id: ${spring_kafka_consumer_group_id:${spring.application.name}-${random.uuid}}
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       enable-auto-commit: true
