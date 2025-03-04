@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -55,7 +52,7 @@ public class KillCacheController {
             return KillCacheRsDto.builder()
                     .status(Status.TIMEOUT)
                     .build();
-        } catch (ExecutionException e) {
+        } catch (ExecutionException | CompletionException e) {
             return KillCacheRsDto.builder()
                     .status(Status.FAILED)
                     .build();
