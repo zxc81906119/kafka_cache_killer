@@ -6,8 +6,8 @@ spring:
       auto-create: false
     producer:
       acks: all
-      batch-size: 32KB
-      buffer-memory: 64MB
+      batch-size: 16KB
+      buffer-memory: 32MB
       compression-type: zstd
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -16,7 +16,7 @@ spring:
         enable.idempotence: true
         max.in.flight.requests.per.connection: 5
     consumer:
-      group-id: ${spring_kafka_consumer_group_id:${spring.application.name}-${random.uuid}}
+      group-id: ${spring_kafka_consumer_group_id:a}
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       enable-auto-commit: true
@@ -24,6 +24,7 @@ spring:
       auto-offset-reset: latest
       heartbeat-interval: 3s
       properties:
+        offsets.topic.num.partitions: 50
         spring.json.trusted.packages: '*'
         session.timeout.ms: 45000
         max.poll.interval.ms: 300000
